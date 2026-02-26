@@ -81,9 +81,15 @@
     display: none;
 }
 
-@media screen and (max-width: 35rem){
+@media screen and (max-width: 63rem){
     .hide {
     display: inline;
+    }
+}
+
+@media screen and (max-width: 63rem){
+    .menus {
+    display: none;
     }
 }
 
