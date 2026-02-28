@@ -112,47 +112,45 @@ const errorRender = (errorMessage) => {
     document.getElementById("news-board").innerHTML=errorHTML;
 }
 
-const pagiNationRender = ( ) => {
-  //totalResult,
-  //page
-  //pageSize
-  //groupSize
-  //totalPages
+
+const pagiNationRender = () => {
+  let pagiNationHTML = ``;
   const totalPages =  Math.ceil (totalResults / pageSize);
-  //pageGroup
   const pageGroup = Math.ceil (page / groupSize);
-  //lastPage
   let lastPage = pageGroup * groupSize;
-  //마지막 페이지그룹이 그룹사이즈보다 작다? lastPage = totalPage
   if(lastPage > totalPages){
     lastPage = totalPages;
   }
-
-  //firstPage
   const firstPage = lastPage - (groupSize - 1) <= 0? 1 : lastPage - (groupSize - 1);
 
-
-  let pagiNationHTML = `<li class="page-item" onclick="moveToPage(${page-1})"><a class="page-link" href="#">&lt;</a></li>`;
-
-  for(let i=firstPage; i<=lastPage; i++){
-  pagiNationHTML += `<li class="page-item ${
-    i === page? "active":""
-  }" onclick="moveToPage(${i})"><a class="page-link">${i}</a></li>`
+  if (page > 1) {
+    pagiNationHTML = `<li class="page-item" onclick="moveToPage(1)">
+                        <a class="page-link" href='#js-bottom'>&lt;&lt;</a>
+                      </li>
+                      <li class="page-item" onclick="moveToPage(${page - 1})">
+                        <a class="page-link" href='#js-bottom'>&lt;</a>
+                      </li>`;
   }
-  pagiNationHTML +=`<li class="page-item" onclick="moveToPage(${page+1})"><a class="page-link" href="#">&gt;</a></li>`;
-  document.querySelector(".pagination").innerHTML=pagiNationHTML
-//   <nav aria-label="Page navigation example">
-// <ul class="pagination">
-//   <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-//   <li class="page-item"><a class="page-link" href="#">1</a></li>
-//   <li class="page-item"><a class="page-link" href="#">2</a></li>
-//   <li class="page-item"><a class="page-link" href="#">3</a></li>
-//   <li class="page-item"><a class="page-link" href="#">Next</a></li>
-// </ul>
-// </nav>
+  for (let i = firstPage; i <= lastPage; i++) {
+    pagiNationHTML += `<li class="page-item ${i == page ? "active" : ""}" >
+                        <a class="page-link" href='#js-bottom' onclick="moveToPage(${i})" >${i}</a>
+                       </li>`;
+  }
+
+  if (page < totalPages) {
+    pagiNationHTML += `<li class="page-item" onclick="moveToPage(${page + 1})">
+                        <a  class="page-link" href='#js-program-detail-bottom'>&gt;</a>
+                       </li>
+                       <li class="page-item" onclick="moveToPage(${totalPages})">
+                        <a class="page-link" href='#js-bottom'>&gt;&gt;</a>
+                       </li>`;
+  }
+
+  document.querySelector(".pagination").innerHTML = pagiNationHTML;
+};
 
 
-}
+
 
 const moveToPage = (pageNum) =>{
   console.log("moveToPage", pageNum);

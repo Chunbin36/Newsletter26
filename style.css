@@ -45,7 +45,7 @@
   z-index: 1;
   top: 0;
   left: 0;
-  background-color: burlywood;
+  background-color: beige;
   overflow-x: hidden;
   transition: 0.5s;
   padding-top: 60px;
@@ -104,4 +104,19 @@ margin-top: 5px;
   .head-line svg {
     width: 100%;
   }
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 1em;
+}
+
+.page-item.active .page-link{
+    background-color: brown;
+    color: white;
+    border-color: brown;
+}
+.page-link{
+    color:brown
 }
