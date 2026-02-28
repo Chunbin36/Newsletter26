@@ -53,6 +53,7 @@ const getLatestNews = async () => {
 
 const getNewsByCategory = async (event) => {
   const category = event.target.textContent.toLowerCase(); // 어떤 버튼 눌렀는지 설정(소문자로)
+  page=1;
   url = new URL(
     `https://noona-times-be-5ca9402f90d9.herokuapp.com/top-headlines?country=kr&category=${category}`,
   );
