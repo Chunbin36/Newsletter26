@@ -69,6 +69,14 @@ const getNewsByKeyword = async () => {
   fetchNews(url);
 };
 
+const searchInput = document.getElementById("search-input");
+
+searchInput.addEventListener("keydown", function (event) {
+  if (event.key === "Enter") {
+    getNewsByKeyword();
+  }
+});
+
 const render = () => {
   const newsHTML = newsList
     .map(

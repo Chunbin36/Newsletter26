@@ -28,6 +28,16 @@
     background-color: beige;
 }
 
+.search-button {
+    border:none;
+    background: none;
+    margin: 4px;
+}
+
+.search-button:hover {
+    background-color: beige;
+}
+
 .news-img-size{
     max-width: 100%;
     max-height: 250px;
@@ -113,10 +123,14 @@ margin-top: 5px;
 }
 
 .page-item.active .page-link{
-    background-color: brown;
+    background-color:  black;
     color: white;
-    border-color: brown;
+    border-color:  black;
 }
 .page-link{
-    color:brown
+    color: black;
+}
+
+.page-link:hover{
+    color: brown;
 }
